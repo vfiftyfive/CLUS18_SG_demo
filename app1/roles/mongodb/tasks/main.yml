@@ -1,0 +1,28 @@
+---
+
+  - name: Install Mongodb
+    shell: |
+      sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+      echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+
+  - apt:
+     name: mongodb-org
+     update_cache: yes
+     state: present
+     force: yes
+    become: yes
+
+  - name: Listen on all interfaces
+    lineinfile:
+      path: /etc/mongod.conf
+      regexp: '(^\s*bindIp:).*$'
+      line: '\1 0.0.0.0'
+      backrefs: yes
+      state: present
+    become: yes
+
+  - name: Enable Mongodb at system start
+    systemd:
+      enabled: yes
+      name: mongod
+      state: started

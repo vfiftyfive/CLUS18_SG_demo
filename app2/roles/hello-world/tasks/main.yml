@@ -1,0 +1,14 @@
+---
+  
+  - name: Flush handlers
+    meta: flush_handlers
+
+  - name: Install Webapp
+    become: no
+    shell: |
+      git clone https://github.com/vegasbrianc/docker-compose-demo.git hello-world
+      cd hello-world && docker-compose up -d
+      docker-compose scale web=5
+    tags: webapp
+
+    

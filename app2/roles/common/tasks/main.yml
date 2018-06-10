@@ -1,0 +1,7 @@
+---
+
+  - name: Set proxy env
+    template:
+      src: templates/proxy.sh.j2
+      dest: /etc/profile.d/proxy.sh
+    become: yes   

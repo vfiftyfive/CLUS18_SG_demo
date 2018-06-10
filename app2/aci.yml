@@ -1,0 +1,180 @@
+---
+
+  - hosts: localhost
+  
+    vars:
+      aci_login: &aci_login
+        host: 10.52.249.199
+        private_key: /home/nvermand/ACI-fabric-2.key
+        certificate_name: admin_cert
+        use_proxy: no
+      tenant: "CLUS18"
+      ap: "App2"
+      bd: "bd-01"
+      epgs:
+        - { epg: "app2_container_hosts", provide: "{{ contracts.0.name }}" }
+      contracts:
+        - name: "CLUS18_app2_ctrct"
+          filter_name: "CLUS18_app2_ctrct_Filter"
+          filter_entries: 
+            - { entry: "http", port: "http" , ethertype: "ip", proto: "tcp" }
+            - { entry: "icmp", ethertype: "ip", proto: "icmp" }
+      vmm_domain: "ACI-nv-POD03-VDS01"
+      extEPG: "ext-EPG"
+      l3Out: "L3-Out"
+      graph_template: "CLUS_SFC"
+
+    tasks:
+    - name: Create Application Profile
+      aci_ap:
+        <<: *aci_login
+        tenant: "{{ tenant }}"
+        ap: "{{ ap }}"
+        state: present
+        
+    - name: Create EPGs
+      aci_epg:
+        <<: *aci_login
+        tenant: "{{ tenant }}"
+        ap: "{{ ap }}"
+        epg: "{{ item.epg }}"
+        bd: "{{ bd }}"
+        state: present
+      with_items:
+        "{{ epgs }}"
+
+    - name: Associate Domain to EPGs
+      aci_epg_to_domain:
+        <<: *aci_login
+        tenant: "{{ tenant }}"
+        ap: "{{ ap }}"
+        epg: "{{ item.epg }}"
+        domain_type: vmm
+        resolution_immediacy: immediate
+        deploy_immediacy: immediate
+        vm_provider: vmware
+        domain_name: "{{ vmm_domain }}"
+      with_items:
+        "{{ epgs }}"
+
+    - name: Create Filters
+      aci_filter:
+        <<: *aci_login
+        tenant: "{{ tenant }}"
+        filter: "{{ item.filter_name }}"
+      with_items:
+        "{{ contracts }}"
+
+    - name: Create Filters Entries
+      aci_filter_entry:
+        <<: *aci_login
+        tenant: "{{ tenant }}"
+        filter: "{{ item.0.filter_name }}"
+        ether_type: "{{ item.1.ethertype }}"
+        ip_protocol: "{{ item.1.proto }}"
+        dst_port: "{{ item.1.port | default(omit) }}"
+        entry: "{{ item.1.entry }}"
+      with_subelements:
+        - "{{ contracts }}"
+        - filter_entries
+
+    - name: Create Contract
+      aci_contract:
+        <<: *aci_login
+        tenant: "{{ tenant }}"
+        contract: "{{ item.name }}"
+      with_items:
+        "{{ contracts }}"
+      
+
+    - name: Create Contract Subject
+      aci_contract_subject:
+        <<: *aci_login
+        tenant: "{{ tenant }}"
+        contract: "{{ item.name }}"
+        subject: "Subject"
+      with_items:
+         "{{ contracts }}"
+
+    - name: Associate Filters
+      aci_contract_subject_to_filter:
+        <<: *aci_login
+        tenant: "{{ tenant }}"
+        contract: "{{ item.name }}"
+        subject: "Subject"
+        filter: "{{ item.filter_name }}"
+      with_items:
+        "{{ contracts }}"
+   
+    - name: Associate Contracts for Providers
+      aci_epg_to_contract:
+        <<: *aci_login
+        tenant: "{{ tenant }}"
+        ap: "{{ ap }}"
+        epg: "{{ item.epg }}"
+        contract_type: provider
+        contract: "{{ item.provide }}"   
+      with_items:
+        "{{ epgs }}"
+
+    - name: Associate Contract to L3 out
+      aci_rest:
+        <<: *aci_login
+        method: post
+        path: /api/mo/uni/tn-{{ tenant }}/out-{{ l3Out }}/instP-{{ extEPG }}.json
+        content:
+          fvRsCons:
+            attributes:
+              tnVzBrCPName: "{{ contracts.0.name }}"
+              
+    - name: Deploy Graph
+      aci_rest:
+        <<: *aci_login
+        method: post
+        path: /api/mo/uni/tn-{{ tenant }}/brc-{{ contracts.0.name }}/subj-Subject.json
+        content:
+          vzRsSubjGraphAtt:
+            attributes:
+              tnVnsAbsGraphName: "{{ graph_template }}"  
+
+    - name: Allow Provisioning Management - Providers
+      aci_rest:
+        <<: *aci_login
+        method: post
+        path: /api/mo/uni/tn-{{ tenant }}.json
+        content:
+          fvAp:
+            attributes:
+              name: "{{ ap }}"
+            children:
+              - fvAEPg:
+                  attributes:
+                    name: "{{ epgs.0.epg }}"
+                  children:
+                    - fvRsProv:
+                        attributes:
+                          tnVzBrCPName: "default"
+
+    - name: Allow Provisioning Management - Consumers 
+      aci_rest:
+        <<: *aci_login
+        method: post
+        path: /api/mo/uni/tn-{{ tenant }}/out-{{ l3Out }}.json
+        content:
+          l3extInstP:
+            attributes:
+              name: "ext_prov_mgmt"
+            children:
+              - l3extSubnet:
+                  attributes:
+                    ip: "10.52.249.210/32"
+              - l3extSubnet:
+                  attributes:
+                    ip: "64.103.36.133/32"
+              - l3extSubnet:
+                  attributes:
+                    ip: "10.52.248.0/23"
+              - fvRsCons:
+                  attributes:
+                    tnVzBrCPName: "default"
+

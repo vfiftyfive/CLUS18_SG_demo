@@ -1,0 +1,17 @@
+---
+
+  - hosts: all
+    
+    roles:
+      - common
+      - docker
+      - hello-world
+
+    environment:
+      https_proxy: http://proxy-ams-1.cisco.com:80
+      http_proxy: http://proxy-ams-1.cisco.com:80
+
+    vars:
+      ansible_become_pass: C1sco123
+      ansible_become: yes
+      docker_version: 18.03.0~ce-0~ubuntu

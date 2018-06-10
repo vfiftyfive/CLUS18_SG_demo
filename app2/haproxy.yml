@@ -1,0 +1,14 @@
+---
+
+  - hosts: all
+
+    roles:
+      - haproxy
+
+    environment:
+      https_proxy: http://proxy-ams-1.cisco.com:80
+      http_proxy: http://proxy-ams-1.cisco.com:80
+
+    vars:
+      ansible_become_pass: C1sco123
+      frontend_port: 80

@@ -1,0 +1,69 @@
+---
+
+  - hosts: all
+
+    vars:
+      ansible_become_pass: "C1sco123"
+      aci_login: &aci_login
+        host: 10.52.249.199
+        private_key: /home/nvermand/ACI-fabric-2.key
+        certificate_name: admin_cert
+        use_proxy: no
+      tenant: "CLUS18"
+      ap: "App2"
+      l3Out: "L3-Out"
+      ext_epg: "ext-EPG"
+      contract: "CLUS18_app2_ctrct"
+      filters:
+        - "CLUS18_app2_ctrct_Filter"
+
+    tasks:
+    - name: Delete haproxy configuration
+      blockinfile:
+        marker: "#{mark} {{ my_app }}"
+        path: /etc/haproxy/haproxy.cfg
+      state: absent
+      notify: restart haproxy
+      become: yes 
+
+    - name: Delete Application Profile
+      aci_ap:
+        <<: *aci_login
+        tenant: "{{ tenant }}"
+        ap: "{{ ap }}" 
+        state: absent
+      delegate_to: localhost
+
+    - name: Delete Contract
+      aci_contract:
+        <<: *aci_login
+        tenant: "{{ tenant }}"
+        contract: "{{ contract }}"
+        state: absent
+      delegate_to: localhost
+
+    - name: Delete Filters
+      aci_filter:
+        <<: *aci_login
+        tenant: "{{ tenant }}"
+        filter: "{{ item }}"
+        state: absent
+      with_items:
+        "{{ filters }}"
+      delegate_to: localhost
+
+    - name: Remove ACI contract association in L3 out external EPG
+      aci_rest:
+        <<: *aci_login
+        path: /api/mo/uni/tn-{{ tenant }}/out-{{ l3Out }}/instP-{{ ext_epg }}/rscons-{{ contract }}.json
+        method: delete
+      delegate_to: localhost
+    
+    handlers:
+      - name: restart haproxy
+        service:
+          name: haproxy
+          state: restarted
+        become: yes
+
+    

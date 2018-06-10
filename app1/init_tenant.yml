@@ -1,0 +1,13 @@
+---
+
+  - hosts: localhost
+    vars: { aci_apic: "10.52.249.199" }
+    tasks:
+    - name: Initializing ACI tenant
+      aci_rest:
+        host: "{{ aci_apic }}"
+        private_key: /home/nvermand/ACI-fabric-2.key
+        certificate_name: admin_cert
+        method: post
+        path: /api/mo/uni.json
+        src: /home/nvermand/Scripts/terraform/CLUS18/tn-CLUS18.json

@@ -1,0 +1,5 @@
+vsphere_compute_cluster="pod-03"
+net = "CLUS18|App2|app2_container_hosts"
+vm_name = "vm-chost"
+folder = "ACI/CL18_US"
+haproxy = "10.51.48.123"

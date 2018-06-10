@@ -1,0 +1,983 @@
+{
+    "totalCount": "1",
+    "imdata": [
+        {
+            "fvTenant": {
+                "attributes": {
+                    "annotation": "",
+                    "descr": "",
+                    "dn": "uni/tn-CLUS18",
+                    "name": "CLUS18",
+                    "nameAlias": "",
+                    "ownerKey": "",
+                    "ownerTag": ""
+                },
+                "children": [
+                    {
+                        "vnsSvcCont": {
+                            "attributes": {
+                                "annotation": ""
+                            }
+                        }
+                    },
+                    {
+                        "vnsLDevIf": {
+                            "attributes": {
+                                "annotation": "",
+                                "description": "",
+                                "ldev": "uni/tn-common/lDevVip-CLUS18_SLB",
+                                "name": "",
+                                "nameAlias": ""
+                            }
+                        }
+                    },
+                    {
+                        "vnsLDevIf": {
+                            "attributes": {
+                                "annotation": "",
+                                "description": "",
+                                "ldev": "uni/tn-common/lDevVip-CLUS18_FW",
+                                "name": "",
+                                "nameAlias": ""
+                            }
+                        }
+                    },
+                    {
+                        "vnsLDevCtx": {
+                            "attributes": {
+                                "annotation": "",
+                                "context": "",
+                                "ctrctNameOrLbl": "any",
+                                "descr": "",
+                                "graphNameOrLbl": "CLUS_SFC",
+                                "name": "",
+                                "nameAlias": "",
+                                "nodeNameOrLbl": "FW"
+                            },
+                            "children": [
+                                {
+                                    "vnsRsLDevCtxToLDev": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "tDn": "uni/tn-CLUS18/lDevIf-[uni/tn-common/lDevVip-CLUS18_FW]"
+                                        }
+                                    }
+                                },
+                                {
+                                    "vnsLIfCtx": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "connNameOrLbl": "consumer",
+                                            "descr": "",
+                                            "l3Dest": "no",
+                                            "name": "",
+                                            "nameAlias": "",
+                                            "permitLog": "no"
+                                        },
+                                        "children": [
+                                            {
+                                                "vnsRsLIfCtxToSvcRedirectPol": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tDn": "uni/tn-common/svcCont/svcRedirectPol-CLUS18_FW"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "vnsRsLIfCtxToLIf": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tDn": "uni/tn-CLUS18/lDevIf-[uni/tn-common/lDevVip-CLUS18_FW]/lDevIfLIf-in_out"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "vnsRsLIfCtxToCustQosPol": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tnQosCustomPolName": ""
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "vnsRsLIfCtxToBD": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tDn": "uni/tn-CLUS18/BD-bd-01"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "vnsLIfCtx": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "connNameOrLbl": "provider",
+                                            "descr": "",
+                                            "l3Dest": "no",
+                                            "name": "",
+                                            "nameAlias": "",
+                                            "permitLog": "no"
+                                        },
+                                        "children": [
+                                            {
+                                                "vnsRsLIfCtxToSvcRedirectPol": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tDn": "uni/tn-common/svcCont/svcRedirectPol-CLUS18_FW"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "vnsRsLIfCtxToLIf": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tDn": "uni/tn-CLUS18/lDevIf-[uni/tn-common/lDevVip-CLUS18_FW]/lDevIfLIf-in_out"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "vnsRsLIfCtxToCustQosPol": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tnQosCustomPolName": ""
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "vnsRsLIfCtxToBD": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tDn": "uni/tn-CLUS18/BD-bd-01"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "vnsLDevCtx": {
+                            "attributes": {
+                                "annotation": "",
+                                "context": "",
+                                "ctrctNameOrLbl": "any",
+                                "descr": "",
+                                "graphNameOrLbl": "CLUS_SFC",
+                                "name": "",
+                                "nameAlias": "",
+                                "nodeNameOrLbl": "SLB"
+                            },
+                            "children": [
+                                {
+                                    "vnsRsLDevCtxToLDev": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "tDn": "uni/tn-CLUS18/lDevIf-[uni/tn-common/lDevVip-CLUS18_SLB]"
+                                        }
+                                    }
+                                },
+                                {
+                                    "vnsLIfCtx": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "connNameOrLbl": "provider",
+                                            "descr": "",
+                                            "l3Dest": "yes",
+                                            "name": "",
+                                            "nameAlias": "",
+                                            "permitLog": "no"
+                                        },
+                                        "children": [
+                                            {
+                                                "vnsRsLIfCtxToLIf": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tDn": "uni/tn-CLUS18/lDevIf-[uni/tn-common/lDevVip-CLUS18_SLB]/lDevIfLIf-in_out"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "vnsRsLIfCtxToCustQosPol": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tnQosCustomPolName": ""
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "vnsRsLIfCtxToBD": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tDn": "uni/tn-CLUS18/BD-bd-01"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "vnsLIfCtx": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "connNameOrLbl": "consumer",
+                                            "descr": "",
+                                            "l3Dest": "yes",
+                                            "name": "",
+                                            "nameAlias": "",
+                                            "permitLog": "no"
+                                        },
+                                        "children": [
+                                            {
+                                                "vnsRsLIfCtxToLIf": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tDn": "uni/tn-CLUS18/lDevIf-[uni/tn-common/lDevVip-CLUS18_SLB]/lDevIfLIf-in_out"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "vnsRsLIfCtxToCustQosPol": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tnQosCustomPolName": ""
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "vnsRsLIfCtxToBD": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tDn": "uni/tn-CLUS18/BD-bd-01"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "l3extOut": {
+                            "attributes": {
+                                "annotation": "",
+                                "descr": "",
+                                "enforceRtctrl": "export",
+                                "name": "L3-Out",
+                                "nameAlias": "",
+                                "ownerKey": "",
+                                "ownerTag": "",
+                                "targetDscp": "unspecified"
+                            },
+                            "children": [
+                                {
+                                    "l3extRsL3DomAtt": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "tDn": "uni/l3dom-L3-Out-CLUS18"
+                                        }
+                                    }
+                                },
+                                {
+                                    "l3extRsEctx": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "tnFvCtxName": "ctx-01"
+                                        }
+                                    }
+                                },
+                                {
+                                    "l3extLNodeP": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "configIssues": "",
+                                            "descr": "",
+                                            "name": "IPN-01",
+                                            "nameAlias": "",
+                                            "ownerKey": "",
+                                            "ownerTag": "",
+                                            "tag": "yellow-green",
+                                            "targetDscp": "unspecified"
+                                        },
+                                        "children": [
+                                            {
+                                                "l3extRsNodeL3OutAtt": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "configIssues": "",
+                                                        "rtrId": "101.101.101.101",
+                                                        "rtrIdLoopBack": "yes",
+                                                        "tDn": "topology/pod-1/node-102"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "l3extLIfP": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "descr": "",
+                                                        "name": "1-47",
+                                                        "nameAlias": "",
+                                                        "ownerKey": "",
+                                                        "ownerTag": "",
+                                                        "tag": "yellow-green"
+                                                    },
+                                                    "children": [
+                                                        {
+                                                            "l3extRsPathL3OutAtt": {
+                                                                "attributes": {
+                                                                    "addr": "10.254.0.1/24",
+                                                                    "annotation": "",
+                                                                    "autostate": "disabled",
+                                                                    "descr": "",
+                                                                    "encap": "vlan-254",
+                                                                    "encapScope": "local",
+                                                                    "ifInstT": "ext-svi",
+                                                                    "ipv6Dad": "enabled",
+                                                                    "llAddr": "::",
+                                                                    "mac": "00:22:DE:AD:BE:EF",
+                                                                    "mode": "regular",
+                                                                    "mtu": "inherit",
+                                                                    "tDn": "topology/pod-1/paths-102/pathep-[eth1/47]",
+                                                                    "targetDscp": "unspecified"
+                                                                },
+                                                                "children": [
+                                                                    {
+                                                                        "bgpPeerP": {
+                                                                            "attributes": {
+                                                                                "addr": "10.254.0.2",
+                                                                                "allowedSelfAsCnt": "3",
+                                                                                "annotation": "",
+                                                                                "ctrl": "nh-self",
+                                                                                "descr": "",
+                                                                                "name": "",
+                                                                                "nameAlias": "",
+                                                                                "peerCtrl": "",
+                                                                                "privateASctrl": "",
+                                                                                "ttl": "2",
+                                                                                "weight": "0"
+                                                                            },
+                                                                            "children": [
+                                                                                {
+                                                                                    "bgpRsPeerPfxPol": {
+                                                                                        "attributes": {
+                                                                                            "annotation": "",
+                                                                                            "tnBgpPeerPfxPolName": ""
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "bgpAsP": {
+                                                                                        "attributes": {
+                                                                                            "annotation": "",
+                                                                                            "asn": "65120",
+                                                                                            "descr": "",
+                                                                                            "name": "",
+                                                                                            "nameAlias": ""
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        },
+                                                        {
+                                                            "l3extRsNdIfPol": {
+                                                                "attributes": {
+                                                                    "annotation": "",
+                                                                    "tnNdIfPolName": ""
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "l3extRsIngressQosDppPol": {
+                                                                "attributes": {
+                                                                    "annotation": "",
+                                                                    "tnQosDppPolName": ""
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "l3extRsEgressQosDppPol": {
+                                                                "attributes": {
+                                                                    "annotation": "",
+                                                                    "tnQosDppPolName": ""
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "l3extInstP": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "descr": "",
+                                            "exceptionTag": "",
+                                            "floodOnEncap": "disabled",
+                                            "matchT": "AtleastOne",
+                                            "name": "ext-EPG",
+                                            "nameAlias": "",
+                                            "prefGrMemb": "exclude",
+                                            "prio": "unspecified",
+                                            "targetDscp": "unspecified"
+                                        },
+                                        "children": [
+                                            {
+                                                "l3extSubnet": {
+                                                    "attributes": {
+                                                        "aggregate": "",
+                                                        "annotation": "",
+                                                        "descr": "",
+                                                        "ip": "0.0.0.0/0",
+                                                        "name": "",
+                                                        "nameAlias": "",
+                                                        "scope": "import-security"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "fvRsCustQosPol": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tnQosCustomPolName": ""
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "bgpExtP": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "descr": "",
+                                            "nameAlias": ""
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "fvRsTenantMonPol": {
+                            "attributes": {
+                                "annotation": "",
+                                "tnMonEPGPolName": ""
+                            }
+                        }
+                    },
+                    {
+                        "fvCtx": {
+                            "attributes": {
+                                "annotation": "",
+                                "bdEnforcedEnable": "no",
+                                "descr": "",
+                                "knwMcastAct": "permit",
+                                "name": "ctx-01",
+                                "nameAlias": "",
+                                "ownerKey": "",
+                                "ownerTag": "",
+                                "pcEnfDir": "ingress",
+                                "pcEnfPref": "enforced"
+                            },
+                            "children": [
+                                {
+                                    "fvRsVrfValidationPol": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "tnL3extVrfValidationPolName": ""
+                                        }
+                                    }
+                                },
+                                {
+                                    "vzAny": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "descr": "",
+                                            "matchT": "AtleastOne",
+                                            "name": "",
+                                            "nameAlias": "",
+                                            "prefGrMemb": "disabled"
+                                        }
+                                    }
+                                },
+                                {
+                                    "fvRsOspfCtxPol": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "tnOspfCtxPolName": ""
+                                        }
+                                    }
+                                },
+                                {
+                                    "fvRsCtxToEpRet": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "tnFvEpRetPolName": ""
+                                        }
+                                    }
+                                },
+                                {
+                                    "fvRsCtxToExtRouteTagPol": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "tnL3extRouteTagPolName": ""
+                                        }
+                                    }
+                                },
+                                {
+                                    "fvRsBgpCtxPol": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "tnBgpCtxPolName": ""
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "fvBD": {
+                            "attributes": {
+                                "OptimizeWanBandwidth": "no",
+                                "annotation": "",
+                                "arpFlood": "no",
+                                "descr": "",
+                                "epClear": "no",
+                                "epMoveDetectMode": "",
+                                "intersiteBumTrafficAllow": "no",
+                                "intersiteL2Stretch": "no",
+                                "ipLearning": "yes",
+                                "limitIpLearnToSubnets": "yes",
+                                "llAddr": "::",
+                                "mac": "00:22:BD:F8:19:FF",
+                                "mcastAllow": "no",
+                                "multiDstPktAct": "bd-flood",
+                                "name": "bd-01",
+                                "nameAlias": "",
+                                "ownerKey": "",
+                                "ownerTag": "",
+                                "type": "regular",
+                                "unicastRoute": "yes",
+                                "unkMacUcastAct": "proxy",
+                                "unkMcastAct": "flood",
+                                "vmac": "not-applicable"
+                            },
+                            "children": [
+                                {
+                                    "fvSubnet": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "ctrl": "",
+                                            "descr": "",
+                                            "ip": "10.10.0.1/16",
+                                            "name": "",
+                                            "nameAlias": "",
+                                            "preferred": "no",
+                                            "scope": "public",
+                                            "virtual": "no"
+                                        }
+                                    }
+                                },
+                                {
+                                    "fvRsIgmpsn": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "tnIgmpSnoopPolName": ""
+                                        }
+                                    }
+                                },
+                                {
+                                    "fvRsCtx": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "tnFvCtxName": "ctx-01"
+                                        }
+                                    }
+                                },
+                                {
+                                    "fvRsBdToEpRet": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "resolveAct": "resolve",
+                                            "tnFvEpRetPolName": ""
+                                        }
+                                    }
+                                },
+                                {
+                                    "fvRsBDToOut": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "tnL3extOutName": "L3-Out"
+                                        }
+                                    }
+                                },
+                                {
+                                    "fvRsBDToNdP": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "tnNdIfPolName": ""
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "vnsAbsGraph": {
+                            "attributes": {
+                                "annotation": "",
+                                "descr": "",
+                                "name": "CLUS_SFC",
+                                "nameAlias": "",
+                                "ownerKey": "",
+                                "ownerTag": "",
+                                "uiTemplateType": "UNSPECIFIED"
+                            },
+                            "children": [
+                                {
+                                    "vnsAbsTermNodeProv": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "descr": "",
+                                            "name": "T2",
+                                            "nameAlias": "",
+                                            "ownerKey": "",
+                                            "ownerTag": ""
+                                        },
+                                        "children": [
+                                            {
+                                                "vnsOutTerm": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "descr": "",
+                                                        "name": "",
+                                                        "nameAlias": ""
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "vnsInTerm": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "descr": "",
+                                                        "name": "",
+                                                        "nameAlias": ""
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "vnsAbsTermConn": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "attNotify": "no",
+                                                        "descr": "",
+                                                        "name": "1",
+                                                        "nameAlias": "",
+                                                        "ownerKey": "",
+                                                        "ownerTag": ""
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "vnsAbsTermNodeCon": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "descr": "",
+                                            "name": "T1",
+                                            "nameAlias": "",
+                                            "ownerKey": "",
+                                            "ownerTag": ""
+                                        },
+                                        "children": [
+                                            {
+                                                "vnsOutTerm": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "descr": "",
+                                                        "name": "",
+                                                        "nameAlias": ""
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "vnsInTerm": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "descr": "",
+                                                        "name": "",
+                                                        "nameAlias": ""
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "vnsAbsTermConn": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "attNotify": "no",
+                                                        "descr": "",
+                                                        "name": "1",
+                                                        "nameAlias": "",
+                                                        "ownerKey": "",
+                                                        "ownerTag": ""
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "vnsAbsNode": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "descr": "",
+                                            "funcTemplateType": "FW_ROUTED",
+                                            "funcType": "GoTo",
+                                            "isCopy": "no",
+                                            "managed": "no",
+                                            "name": "FW",
+                                            "nameAlias": "",
+                                            "ownerKey": "",
+                                            "ownerTag": "",
+                                            "routingMode": "Redirect",
+                                            "sequenceNumber": "0",
+                                            "shareEncap": "no"
+                                        },
+                                        "children": [
+                                            {
+                                                "vnsRsNodeToLDev": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tDn": "uni/tn-CLUS18/lDevIf-[uni/tn-common/lDevVip-CLUS18_FW]"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "vnsAbsFuncConn": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "attNotify": "no",
+                                                        "descr": "",
+                                                        "name": "consumer",
+                                                        "nameAlias": "",
+                                                        "ownerKey": "",
+                                                        "ownerTag": ""
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "vnsAbsFuncConn": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "attNotify": "no",
+                                                        "descr": "",
+                                                        "name": "provider",
+                                                        "nameAlias": "",
+                                                        "ownerKey": "",
+                                                        "ownerTag": ""
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "vnsAbsNode": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "descr": "",
+                                            "funcTemplateType": "ADC_ONE_ARM",
+                                            "funcType": "GoTo",
+                                            "isCopy": "no",
+                                            "managed": "no",
+                                            "name": "SLB",
+                                            "nameAlias": "",
+                                            "ownerKey": "",
+                                            "ownerTag": "",
+                                            "routingMode": "unspecified",
+                                            "sequenceNumber": "0",
+                                            "shareEncap": "no"
+                                        },
+                                        "children": [
+                                            {
+                                                "vnsRsNodeToLDev": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tDn": "uni/tn-CLUS18/lDevIf-[uni/tn-common/lDevVip-CLUS18_SLB]"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "vnsAbsFuncConn": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "attNotify": "no",
+                                                        "descr": "",
+                                                        "name": "provider",
+                                                        "nameAlias": "",
+                                                        "ownerKey": "",
+                                                        "ownerTag": ""
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "vnsAbsFuncConn": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "attNotify": "no",
+                                                        "descr": "",
+                                                        "name": "consumer",
+                                                        "nameAlias": "",
+                                                        "ownerKey": "",
+                                                        "ownerTag": ""
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "vnsAbsConnection": {
+                                        "attributes": {
+                                            "adjType": "L2",
+                                            "annotation": "",
+                                            "connDir": "provider",
+                                            "connType": "external",
+                                            "descr": "",
+                                            "directConnect": "no",
+                                            "name": "C3",
+                                            "nameAlias": "",
+                                            "ownerKey": "",
+                                            "ownerTag": "",
+                                            "unicastRoute": "yes"
+                                        },
+                                        "children": [
+                                            {
+                                                "vnsRsAbsConnectionConns": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tDn": "uni/tn-CLUS18/AbsGraph-CLUS_SFC/AbsTermNodeProv-T2/AbsTConn"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "vnsRsAbsConnectionConns": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tDn": "uni/tn-CLUS18/AbsGraph-CLUS_SFC/AbsNode-SLB/AbsFConn-provider"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "vnsAbsConnection": {
+                                        "attributes": {
+                                            "adjType": "L2",
+                                            "annotation": "",
+                                            "connDir": "provider",
+                                            "connType": "external",
+                                            "descr": "",
+                                            "directConnect": "no",
+                                            "name": "C2",
+                                            "nameAlias": "",
+                                            "ownerKey": "",
+                                            "ownerTag": "",
+                                            "unicastRoute": "yes"
+                                        },
+                                        "children": [
+                                            {
+                                                "vnsRsAbsConnectionConns": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tDn": "uni/tn-CLUS18/AbsGraph-CLUS_SFC/AbsNode-SLB/AbsFConn-consumer"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "vnsRsAbsConnectionConns": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tDn": "uni/tn-CLUS18/AbsGraph-CLUS_SFC/AbsNode-FW/AbsFConn-provider"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "vnsAbsConnection": {
+                                        "attributes": {
+                                            "adjType": "L3",
+                                            "annotation": "",
+                                            "connDir": "provider",
+                                            "connType": "external",
+                                            "descr": "",
+                                            "directConnect": "no",
+                                            "name": "C1",
+                                            "nameAlias": "",
+                                            "ownerKey": "",
+                                            "ownerTag": "",
+                                            "unicastRoute": "yes"
+                                        },
+                                        "children": [
+                                            {
+                                                "vnsRsAbsConnectionConns": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tDn": "uni/tn-CLUS18/AbsGraph-CLUS_SFC/AbsNode-FW/AbsFConn-consumer"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "vnsRsAbsConnectionConns": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tDn": "uni/tn-CLUS18/AbsGraph-CLUS_SFC/AbsTermNodeCon-T1/AbsTConn"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "drawCont": {
+                            "attributes": {
+                                "annotation": ""
+                            },
+                            "children": [
+                                {
+                                    "drawInst": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "info": "{'{fvAp/epg}-{test}':{'x':-249,'y':461.5},'{fvAp/contract}-{test_ctrct_permit}':{'x':-169,'y':10}}",
+                                            "oDn": "uni/tn-CLUS18/ap-test"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+---
+
+  - name: Install MeteorJS
+    shell: |
+      curl https://install.meteor.com/ | sh
+      meteor npm install --save @babel/runtime
+      touch meteor_installed.log
+    args:
+      creates: meteor_installed.log
+    become: yes
+
+  - name: Install polling app
+    shell: |
+      cd {{ ansible_env.HOME }}
+      git clone https://github.com/vfiftyfive/CLUS18-Demo-Poll-App
+      touch app_installed.log
+    args:
+      creates: app_installed.log
+    ignore_errors: yes
+
+  - name: Start app
+    shell: |
+      cd  CLUS*
+      MONGO_URL='mongodb://{{ backend_ip }}:27017/' meteor
+    async: 604800
+    poll: 0
+
+

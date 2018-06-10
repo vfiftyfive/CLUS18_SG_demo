@@ -1,0 +1,15 @@
+---
+
+  - name: Add HAproxy config block
+    blockinfile:
+      marker: "#{mark} {{ my_app }}"
+      path: /etc/haproxy/haproxy.cfg
+      block: |
+        listen {{ my_app }}
+          balance roundrobin
+          bind {{ vip_app1 }}:80
+          {% for webserver in webservers %}
+          server {{ webserver.name }} {{ webserver.ip }}:{{ frontend_port }} check
+          {% endfor %}
+    notify: restart haproxy
+    become: yes
