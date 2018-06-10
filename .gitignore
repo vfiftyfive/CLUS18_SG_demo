@@ -1,3 +1,5 @@
 .AppleDouble/
 variables.tf
 *.retry
+*.swp
+*.backup
