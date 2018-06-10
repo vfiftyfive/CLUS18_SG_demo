@@ -3,3 +3,4 @@ variables.tf
 *.retry
 *.swp
 *.backup
+.terraform*/
