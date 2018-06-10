@@ -2,7 +2,6 @@
 
 #Init vars
 vip_app1=10.10.99.1
-vip_app2=10.10.99.2
 export no_proxy="localhost,127.0.0.1,.cisco.com,.uktme.cisco.com,10.52.249.199,192.168.81.50"
 
 #Deploy tenant
