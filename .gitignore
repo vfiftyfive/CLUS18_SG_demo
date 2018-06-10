@@ -5,3 +5,4 @@ variables.tf
 *.backup
 .terraform*/
 *.tfstate
+*.tfvars
