@@ -4,3 +4,4 @@ variables.tf
 *.swp
 *.backup
 .terraform*/
+*.tfstate
